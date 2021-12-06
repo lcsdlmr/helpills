@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var UserModel = require('../bdd/users')
+var UserModel = require('../models/bdd/users')
 
 
 /* GET home page. */
