@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var UserModel = require('../models/bdd/users')
+var RdvModel = require('../models/bdd/rdv')
 
 
 /* GET home page. */
@@ -9,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/users/inscription',async function(req, res){
+router.post('/user/inscription',async function(req, res){
 newUser = new UserModel({
   email : req.body.email,
   nom : req.body.nom,
@@ -22,21 +23,49 @@ newUser = new UserModel({
   antecedent : req.body.antecedent
 })
 await newUser.save()
-
-<<<<<<< HEAD
-router.post('/addRDV', function(req, res, next) {
-  var firstname = req.body.firstname
-  var twoname = req.body.twoname
-  if(!firstname || !twoname){
-    res.json({ enter: false });
-  }else{
-    res.json({ enter: true })
-  }
-  res.render('index', { title: 'Express' });
-});
-=======
 res.json({newUser});
 })
+
+
+router.post('/addrdv',async function(req, res){
+  var patient = await UserModel.findOne({email : 'maxime@gmail.com'})
+  var docteur = await UserModel.findOne({email : 'maxime@gmail.com'})
+  console.log(user)
+
+  if(user != null){
+    newRdv = new RdvModel({
+    date : req.body.date,
+    patientId : patient._id,
+    medecinId : docteur._id,    
+    Photo: req.body.photo,
+    descritpion : req.body.descritpion,
+    validite : req.body.validite,
+    prescription : {number: req.body.number,
+                    prise: req.body.prise,
+                    duree: req.body.duree,
+                    autre: req.body.autre,
+                    }
+
+  })}
+  await newRdv.save()
+  res.json({newRdv});
+  })
+
+  router.get('/recepRdv', async function(req,res,next){
+    var articles = []
+  
+    var docteur = await UserModel.find({email : 'maxime@gmail.com'})
+
+    if(docteur != null){
+    
+ 
+    var articles = await RdvModel.find({medecinId : docteur._id})
+   
+    }
+  
+    res.json({articles})
+    
+  })
 
 
 
@@ -52,7 +81,6 @@ res.json({newUser});
 //   }
 //   res.render('index', { title: 'Express' });
 // });
->>>>>>> 93d8c513c98333a2d1219c3522c7a558a8fe2c22
 
 
 // router.post('/addFirstName', function (req, res, next) {
