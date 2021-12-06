@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 
 
-router.post('/addFirstName', function(req, res, next) {
+router.post('/addRDV', function(req, res, next) {
   var firstname = req.body.firstname
   var twoname = req.body.twoname
   if(!firstname || !twoname){
