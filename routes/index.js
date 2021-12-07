@@ -31,9 +31,9 @@ router.post('/addrdv',async function(req, res){
   console.log("route add info##########################")
   var patient = await UserModel.findOne({email : 'maxime@gmail.com'})
   var docteur = await UserModel.findOne({email : 'maxime@gmail.com'})
-  console.log(user)
+  
 
-  if(user != null){
+  if(patient != null){
     newRdv = new RdvModel({
     date : req.body.date,
     patientId : patient._id,
