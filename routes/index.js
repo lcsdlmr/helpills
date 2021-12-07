@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/inscription',async function(req, res){
-  console.log('testttttt')
+  console.log('*************************************************')
   newUser = new UserModel({
     email : req.body.email,
     nom : req.body.nom,
