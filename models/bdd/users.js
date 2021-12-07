@@ -1,5 +1,12 @@
 var mongoose = require('mongoose');
 
+var banqueSchema = mongoose.Schema({
+  cryptograme : String,
+  dateValid : String,
+  numCarte : String
+})
+
+
 var userSchema = mongoose.Schema({
    email : String,
    nom : String,
@@ -8,12 +15,14 @@ var userSchema = mongoose.Schema({
    photo : [String],
    password : String,
    adress : String,
+   ville : String,
+   codePostal : String,
    telephone : String,
-   status : String,
-   nsecu : String,
+   status : Number,
+   nSecu : String,
    mutuel : String,
    admin : Number,
-   idBanque : Object,
+   idBanque : [banqueSchema],
    StatusValide : Boolean,
    DispoDate : Date,
    dispoNow : Boolean,
