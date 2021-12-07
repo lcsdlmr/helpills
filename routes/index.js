@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/users/inscription',async function(req, res){
+router.post('/inscription',async function(req, res){
+  console.log('testttttt')
 newUser = new UserModel({
   email : req.body.email,
   nom : req.body.nom,
@@ -19,11 +20,22 @@ newUser = new UserModel({
   plaqueImmat : req.body.plaqueImmat,
   numPharma : req.body.numPharma,
   numDoc : req.body.numDoc,
-  antecedent : req.body.antecedent
+  antecedent : req.body.antecedent,
+  documents: req.body.documents,
+  photo: req.body.photo,
+  adress: req.body.adress,
+  ville: req.body.ville,
+  codePostal: req.body.codePostal,
+  telephone: req.body.telephone,
+  nSecu: req.body.nSecu,
+  mutuel: req.body.mutuel,
+  idBanque: req.body.idBanque,
+
 })
 await newUser.save()
+res.json({newUser});
+})
 
-<<<<<<< HEAD
 router.post('/addRDV', function(req, res, next) {
   var firstname = req.body.firstname
   var twoname = req.body.twoname
@@ -34,9 +46,7 @@ router.post('/addRDV', function(req, res, next) {
   }
   res.render('index', { title: 'Express' });
 });
-=======
-res.json({newUser});
-})
+
 
 
 
@@ -52,7 +62,6 @@ res.json({newUser});
 //   }
 //   res.render('index', { title: 'Express' });
 // });
->>>>>>> 93d8c513c98333a2d1219c3522c7a558a8fe2c22
 
 
 // router.post('/addFirstName', function (req, res, next) {
