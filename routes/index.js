@@ -29,7 +29,9 @@ router.post('/inscription',async function(req, res){
     telephone: req.body.telephone,
     nSecu: req.body.nSecu,
     mutuel: req.body.mutuel,
-    idBanque: req.body.idBanque,
+    idBanque: {cryptograme : req.body.cryptograme,
+               dateValid : req.body.dateValid,
+               numCarte : req.body.numCarte},
 
   })
 await newUser.save()
