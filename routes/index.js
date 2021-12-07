@@ -23,7 +23,6 @@ newUser = new UserModel({
 })
 await newUser.save()
 
-<<<<<<< HEAD
 router.post('/addRDV', function(req, res, next) {
   var firstname = req.body.firstname
   var twoname = req.body.twoname
@@ -34,7 +33,6 @@ router.post('/addRDV', function(req, res, next) {
   }
   res.render('index', { title: 'Express' });
 });
-=======
 res.json({newUser});
 })
 
@@ -52,7 +50,6 @@ res.json({newUser});
 //   }
 //   res.render('index', { title: 'Express' });
 // });
->>>>>>> 93d8c513c98333a2d1219c3522c7a558a8fe2c22
 
 
 // router.post('/addFirstName', function (req, res, next) {
