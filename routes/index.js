@@ -29,8 +29,8 @@ res.json({newUser});
 
 router.post('/addrdv',async function(req, res){
   console.log("route add info##########################")
-  var patient = await UserModel.findOne({email : 'maxime@gmail.com'})
-  var docteur = await UserModel.findOne({email : 'maxime@gmail.com'})
+  var patient = await UserModel.findOne({email : req.body.patientId})
+  var docteur = await UserModel.findOne({email : req.body.medecinId})
   
 
   if(patient != null){
