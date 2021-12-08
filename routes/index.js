@@ -40,6 +40,20 @@ res.json({newUser});
 })
 
 
+router.post('/connection', async function(req, res){
+
+  var userConnect = await UserModel.findOne({email : 'maxime2@gmail.com'} );
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", userConnect)
+ if(userConnect.password == req.body.password){
+  res.json({isok:true}) 
+ }else{
+  res.json({isok:false})
+ }
+ console.log("************************************************************************************************",isok)
+
+
+})
+
 
 router.post('/addrdv',async function(req, res){
   console.log("route add info##########################")
