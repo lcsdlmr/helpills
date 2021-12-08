@@ -79,9 +79,9 @@ router.post('/addrdv',async function(req, res){
        
       for(var i=0 ; i < articles.length ; i++){
         var test =  articles[i]
-        console.log('forrrrrrr',test)
-        var test3 = await UserModel.findById(test.patientId)
-        console.log("testttttttttttttttt", test3.nom)
+        // console.log('forrrrrrr',test)
+        // var test3 = await UserModel.findById(test.patientId)
+        // console.log("testttttttttttttttt", test3.nom)
         var test4 = { nameclient : 4}
         console.log("testtetetetetetete",test4)
         var test5 = Object.assign(test,test4)
