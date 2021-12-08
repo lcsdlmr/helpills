@@ -84,8 +84,8 @@ router.post('/addrdv',async function(req, res){
         console.log("testttttttttttttttt", test3.nom)
         var test4 = {name : test3.nom}
         console.log("testtetetetetetete",test4)
-        var tab = Object.assign(test, test4)
-        console.log("finaltesttt",tab)
+        var test5 = Object.assign(test,test4)
+        console.log("finaltesttt",test5)
       }
 
 
