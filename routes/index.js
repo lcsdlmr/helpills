@@ -82,7 +82,7 @@ router.post('/addrdv',async function(req, res){
       console.log("test",articles)
 
 
-      const miseEnFormeDate = ((event, i) => {
+      const miseEnFormeDate = (async (event, i) => {
         var name = await UserModel.findById(event.patientId)
         Object.assign(articles, name.nom)
         
