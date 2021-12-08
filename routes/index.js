@@ -82,11 +82,20 @@ router.post('/addrdv',async function(req, res){
         // console.log('forrrrrrr',test)
         // var test3 = await UserModel.findById(test.patientId)
         // console.log("testttttttttttttttt", test3.nom)
-        var test4 = { nameclient : 4}
-        console.log("testtetetetetetete",test4)
-        var test5 = Object.assign(test,test4)
-        console.log("finaltesttt",test5)
-        console.log("tentative", test)
+        // var test4 = { nameclient : 4}
+        // console.log("testtetetetetetete",test4)
+        // var test5 = Object.assign(test,test4)
+        // console.log("finaltesttt",test5)
+        // console.log("tentative", test)
+        const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+const returnedTarget = Object.assign(target, source);
+
+console.log(target);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+console.log(returnedTarget);
 
       }
 
