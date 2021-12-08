@@ -74,31 +74,34 @@ router.post('/addrdv',async function(req, res){
 
     if(docteur != null){
     
+      var articles = await RdvModel.find({medecinId : docteur._id})    
+    // , (error, data) => {
+    //   if(error){
+    //     console.log(error)
+    //   }else{
+    //     console.log(data)
+    //    var data1 = data
         
-    RdvModel.find({medecinId : docteur._id}, (error, data) => {
-      if(error){
-        console.log(error)
-      }else{
-        console.log(data)
-       articles = data
-        
-      }
-    })
+    //   }
+    // })
    
     }else{
-      RdvModel.find({patientId : patient._id}, (error, data) => {
-        if(error){
-          console.log(error)
-        }else{
-          console.log(data)
-          articles = data
-        }
-      })
+
+      var articles = RdvModel.find({patientId : patient._id})
+      
+      // , (error, data) => {
+      //   if(error){
+      //     console.log(error)
+      //   }else{
+      //     console.log(data)
+      //     var data1 = data
+      //   }
+      // })
 
 
     }
   
-    res.json({data})
+    res.json({articles})
     
   })
 
