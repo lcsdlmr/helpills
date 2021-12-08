@@ -76,10 +76,10 @@ router.post('/addrdv',async function(req, res){
     
       var articles = await RdvModel.find({medecinId : docteur._id})
       var name = UserModel.findOne({_id : articles.patientId })
-
-      console.log(articles)
+      console.log("test 1 info", name)
+      console.log("pour info",articles)
       
-      var articles = articles.map(() => console.log(articles))
+      var articles = articles.map(() => console.log("test map",articles.patientId))
       
       console.log("test",articles)
   
