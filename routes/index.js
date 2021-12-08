@@ -88,15 +88,15 @@ router.post('/addrdv',async function(req, res){
         const test5 = Object.assign(test4, test2)
         console.log("finaltesttt",test5)
         console.log("tentative", test4)
-        const target = { a: 1, b: 2 };
-        const source = { b: 4, c: 5 };
+        // const target = { a: 1, b: 2 };
+        // const source = { b: 4, c: 5 };
 
-        const returnedTarget = Object.assign(target, source, test4);
+        // const returnedTarget = Object.assign(target, source, test4);
 
-        console.log(target);
-        // expected output: Object { a: 1, b: 4, c: 5 }
+        // console.log(target);
+        // // expected output: Object { a: 1, b: 4, c: 5 }
 
-        console.log(returnedTarget);
+        // console.log(returnedTarget);
 
       }
 
