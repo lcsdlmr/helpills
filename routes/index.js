@@ -77,9 +77,9 @@ router.post('/addrdv',async function(req, res){
     
       var articles = await RdvModel.find({medecinId : docteur._id})
        
-      for(var i=0 ; i<articles.length ; i++){
+      for(var i=0 ; i < articles.length ; i++){
         var test =  articles[i]
-        console.log(test)
+        console.log('forrrrrrr',test)
         // var test3 = test2(async() => await UserModel.findById(test))
         // var test4 = Object.assign(test, test3)
       }
@@ -93,9 +93,9 @@ router.post('/addrdv',async function(req, res){
 
 
 
-      console.log("test 1 info######################################################################################################################################")
-      console.log("pour info",articles)     
-      console.log("test",articles)
+      // console.log("test 1 info######################################################################################################################################")
+      // console.log("pour info",articles)     
+      // console.log("test",articles)
 
 
       const miseEnFormeDate = (async (event, i) => {
