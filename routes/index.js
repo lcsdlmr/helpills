@@ -69,24 +69,24 @@ router.post('/addrdv',async function(req, res){
   router.get('/recepRdv', async function(req,res,next){
     var articles = []
   
-    var patient = await UserModel.findOne({email : req.body.patientId})
+    var patient = await UserModel.findOne({email : "patientemail1"})
     var docteur = await UserModel.findOne({email : "docemail"})
 
     if(docteur != null){
     
         
-    RdvModel.find({medecinId : docteur._id}, (error, data) => {
+    RdvModel.find({patientId : patient._id}, (error, data) => {
       if(error){
         console.log(error)
       }else{
         console.log(data)
-        articles = data
+        
       }
     })
    
     }
   
-    res.json({data})
+    res.json({articles})
     
   })
 
