@@ -37,9 +37,14 @@ router.post('/inscription',async function(req, res){
                dateValid : req.body.dateValid,
                numCarte : req.body.numCarte},
 
-  })}
-await newUser.save()
-res.json({newUser});
+  })
+var userSave = await newUser.save()
+console.log(userSave)
+res.json({isok:true, userSave:userSave})
+}else{
+  res.json({isok:false})
+}
+
 })
 
 
