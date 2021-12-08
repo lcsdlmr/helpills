@@ -74,7 +74,13 @@ router.post('/addrdv',async function(req, res){
 
     if(docteur != null){
     
-      var articles = await RdvModel.find({medecinId : docteur._id, name : 'rerer'})
+      var articles = await RdvModel.find({medecinId : docteur._id})
+
+      console.log(articles)
+      
+      // var articles = body.articles.map((event, i) => (miseEnFormeDate(event, i)))
+      
+      // Object.assign(items,{[newdate] : [{name:event.description +" " + i, height: 80}]})
   
    
     }else{
