@@ -78,24 +78,24 @@ router.post('/addrdv',async function(req, res){
       var articles = await RdvModel.find({medecinId : docteur._id})
        
       for(var i=0 ; i < articles.length ; i++){
-        var test =  articles[i]
-        // console.log('forrrrrrr',test)
-        // var test3 = await UserModel.findById(test.patientId)
-        // console.log("testttttttttttttttt", test3.nom)
-        // var test4 = { nameclient : 4}
-        // console.log("testtetetetetetete",test4)
-        // var test5 = Object.assign(test,test4)
-        // console.log("finaltesttt",test5)
-        // console.log("tentative", test)
+        const test =  articles[i]
+        console.log('forrrrrrr',test)
+        const test3 = await UserModel.findById(test.patientId)
+        console.log("testttttttttttttttt", test3.nom)
+        const test4 = { nameclient : 4};
+        console.log("testtetetetetetete",test4)
+        const test5 = Object.assign(test,test4)
+        console.log("finaltesttt",test5)
+        console.log("tentative", test)
         const target = { a: 1, b: 2 };
-const source = { b: 4, c: 5 };
+        const source = { b: 4, c: 5 };
 
-const returnedTarget = Object.assign(target, source);
+        const returnedTarget = Object.assign(target, source);
 
-console.log(target);
-// expected output: Object { a: 1, b: 4, c: 5 }
+        console.log(target);
+        // expected output: Object { a: 1, b: 4, c: 5 }
 
-console.log(returnedTarget);
+        console.log(returnedTarget);
 
       }
 
