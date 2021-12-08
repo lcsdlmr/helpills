@@ -89,6 +89,9 @@ router.post('/addrdv',async function(req, res){
         const test6 = Object.assign(test5, test2)
         console.log("finaltesttt",test6)
         console.log("tentative", test5)
+        tab.push(test6)
+
+
         // const target = { a: 1, b: 2 };
         // const source = { b: 4, c: 5 };
 
