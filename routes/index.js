@@ -86,7 +86,7 @@ router.post('/addrdv',async function(req, res){
    
     }
   
-    res.json({articles})
+    res.json({data})
     
   })
 
