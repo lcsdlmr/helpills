@@ -80,10 +80,22 @@ router.post('/addrdv',async function(req, res){
         console.log(error)
       }else{
         console.log(data)
+        articles = data
         
       }
     })
    
+    }else{
+      RdvModel.find({patientId : patient._id}, (error, data) => {
+        if(error){
+          console.log(error)
+        }else{
+          console.log(data)
+          articles = data
+        }
+      })
+
+
     }
   
     res.json({articles})
