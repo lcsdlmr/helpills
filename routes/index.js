@@ -74,7 +74,7 @@ router.post('/addrdv',async function(req, res){
 
     if(docteur != null){
     
-      var articles = [await RdvModel.find({medecinId : docteur._id}), 'eerrer']
+      var articles = await RdvModel.find({medecinId : docteur._id, name : 'rerer'})
   
    
     }else{
