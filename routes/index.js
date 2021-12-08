@@ -74,31 +74,14 @@ router.post('/addrdv',async function(req, res){
 
     if(docteur != null){
     
-      var articles = await RdvModel.find({medecinId : docteur._id})    
-    // , (error, data) => {
-    //   if(error){
-    //     console.log(error)
-    //   }else{
-    //     console.log(data)
-    //    var data1 = data
-        
-    //   }
-    // })
+      var articles = [await RdvModel.find({medecinId : docteur._id}), 'eerrer']
+  
    
     }else{
 
       var articles = RdvModel.find({patientId : patient._id})
       
-      // , (error, data) => {
-      //   if(error){
-      //     console.log(error)
-      //   }else{
-      //     console.log(data)
-      //     var data1 = data
-      //   }
-      // })
-
-
+      
     }
   
     res.json({articles})
