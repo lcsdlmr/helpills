@@ -12,6 +12,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/inscription',async function(req, res){
   console.log('*************************************************')
+  
+  var compteExistant = await UserModel.findOne({ email: req.body.email });
+  if(compteExistant === null){
   newUser = new UserModel({
     email : req.body.email,
     nom : req.body.nom,
@@ -34,14 +37,14 @@ router.post('/inscription',async function(req, res){
                dateValid : req.body.dateValid,
                numCarte : req.body.numCarte},
 
-  })
+  })}
 await newUser.save()
 res.json({newUser});
 })
 
 
 router.post('/connection', async function(req, res){
-console.log(req.body.email , req.body.password)
+console.log(req.body.email , req.body.password, "*************************************************************")
   var userConnect = await UserModel.findOne({email : req.body.email } );
   console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", userConnect)
  if(userConnect.password == req.body.password){
