@@ -53,7 +53,7 @@ router.post('/addrdv',async function(req, res){
     patientId : patient._id,
     medecinId : docteur._id,    
     Photo: req.body.photo,
-    descritpion : req.body.descritpion,
+    description : req.body.descritpion,
     validite : req.body.validite,
     prescription : {number: req.body.number,
                     prise: req.body.prise,
