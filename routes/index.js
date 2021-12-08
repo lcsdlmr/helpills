@@ -70,7 +70,7 @@ router.post('/addrdv',async function(req, res){
     var articles = []
   
     var patient = await UserModel.findOne({email : req.body.patientId})
-    var docteur = await UserModel.findOne({email : req.body.medecinId})
+    var docteur = await UserModel.findOne({email : "docemail"})
 
     if(docteur != null){
     
