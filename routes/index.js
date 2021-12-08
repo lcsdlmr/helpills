@@ -82,10 +82,12 @@ router.post('/addrdv',async function(req, res){
         console.log('forrrrrrr',test)
         var test3 = await UserModel.findById(test.patientId)
         console.log("testttttttttttttttt", test3.nom)
-        var test4 = {nameclient : 4}
+        var test4 = { nameclient : 4}
         console.log("testtetetetetetete",test4)
         var test5 = Object.assign(test,test4)
         console.log("finaltesttt",test5)
+        console.log("tentative", test)
+
       }
 
 
