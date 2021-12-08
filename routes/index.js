@@ -98,17 +98,17 @@ router.post('/addrdv',async function(req, res){
       // console.log("test",articles)
 
 
-      const miseEnFormeDate = (async (event, i) => {
-        console.log("console.logd eevent",event)
-        var name = await UserModel.findById("61b0bf3e5dffa0cc7a242bcf")
-        Object.assign(articles, name)
+      // const miseEnFormeDate = (async (event, i) => {
+      //   console.log("console.logd eevent",event)
+      //   var name = await UserModel.findById("61b0bf3e5dffa0cc7a242bcf")
+      //   Object.assign(articles, name)
         
         
       
-      })
+     
       
-      var tab = articles.map((event, i) => (miseEnFormeDate(event, i)))
-      console.log('testttttttttttttttt',tab)
+      // var tab = articles.map((event, i) => (miseEnFormeDate(event, i)))
+      // console.log('testttttttttttttttt',tab)
     }else{
 
       var articles = RdvModel.find({patientId : patient._id})
