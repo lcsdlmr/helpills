@@ -67,7 +67,8 @@ router.post('/addrdv',async function(req, res){
   })
 
   router.get('/recepRdv', async function(req,res,next){
-    var articles = []
+    var articles = {}
+    var tab = []
   
     var patient = await UserModel.findOne({email : "patientemail1"})
     var docteur = await UserModel.findOne({email : "docemail"})
@@ -75,15 +76,21 @@ router.post('/addrdv',async function(req, res){
     if(docteur != null){
     
       var articles = await RdvModel.find({medecinId : docteur._id})
-      var name = await UserModel.findById(articles.patientId)
+      
       console.log("test 1 info######################################################################################################################################", name)
-      console.log("pour info",articles)
-      
-      var articles = articles.map(async ()  => {await UserModel.findById(articles.patientId)})
-
-      
+      console.log("pour info",articles)     
       console.log("test",articles)
-  
+
+
+      const miseEnFormeDate = ((event, i) => {
+        var name = await UserModel.findById(event.patientId)
+        Object.assign(articles, name.nom)
+        
+        
+      
+      })
+      
+      var tab = articles.map((event, i) => (miseEnFormeDate(event, i)))
    
     }else{
 
@@ -92,7 +99,7 @@ router.post('/addrdv',async function(req, res){
       
     }
   
-    res.json({articles})
+    res.json({tab})
     
   })
 
