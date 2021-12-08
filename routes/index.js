@@ -39,6 +39,19 @@ await newUser.save()
 res.json({newUser});
 })
 
+router.post('/connection', async function(req, res){
+
+  var userConnect = await UserModel.findOne({email : req.body.email} );
+ if(userConnect.password == req.body.password){
+  res.json({isok:true}) 
+ }else{
+  res.json({isok:false})
+ }
+ 
+  
+
+})
+
 router.post('/addRDV', function(req, res, next) {
   var firstname = req.body.firstname
   var twoname = req.body.twoname
