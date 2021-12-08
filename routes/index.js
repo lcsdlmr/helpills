@@ -39,30 +39,6 @@ await newUser.save()
 res.json({newUser});
 })
 
-router.post('/connection', async function(req, res){
-
-  var userConnect = await UserModel.findOne({email : req.body.email} );
- if(userConnect.password == req.body.password){
-  res.json({isok:true}) 
- }else{
-  res.json({isok:false})
- }
- 
-  
-
-})
-
-router.post('/addRDV', function(req, res, next) {
-  var firstname = req.body.firstname
-  var twoname = req.body.twoname
-  if(!firstname || !twoname){
-    res.json({ enter: false });
-  }else{
-    res.json({ enter: true })
-  }
-  res.render('index', { title: 'Express' });
-});
-
 
 
 router.post('/addrdv',async function(req, res){
@@ -93,7 +69,8 @@ router.post('/addrdv',async function(req, res){
   router.get('/recepRdv', async function(req,res,next){
     var articles = []
   
-    var docteur = await UserModel.find({email : 'maxime@gmail.com'})
+    var patient = await UserModel.findOne({email : req.body.patientId})
+    var docteur = await UserModel.findOne({email : req.body.medecinId})
 
     if(docteur != null){
     
