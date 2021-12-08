@@ -69,7 +69,7 @@ router.post('/addrdv',async function(req, res){
   router.get('/recepRdv', async function(req,res,next){
     var articles = {}
     var tab = []
-  
+    console.log(tab)
     var patient = await UserModel.findOne({email : "patientemail1"})
     var docteur = await UserModel.findOne({email : "docemail"})
 
@@ -83,8 +83,8 @@ router.post('/addrdv',async function(req, res){
 
 
       const miseEnFormeDate = (async (event, i) => {
-       
-        Object.assign(articles, await UserModel.findById(event.patientId))
+        var name = await UserModel.findById(event.patientId)
+        Object.assign(articles, name)
         
         
       
