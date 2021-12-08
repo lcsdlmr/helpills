@@ -78,9 +78,9 @@ router.post('/addrdv',async function(req, res){
 
       console.log(articles)
       
-      // var articles = body.articles.map((event, i) => (miseEnFormeDate(event, i)))
+      var articles = articles.map(() => console.log('la'))
       
-      // Object.assign(items,{[newdate] : [{name:event.description +" " + i, height: 80}]})
+      
   
    
     }else{
