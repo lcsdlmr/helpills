@@ -41,8 +41,8 @@ res.json({newUser});
 
 
 router.post('/connection', async function(req, res){
-
-  var userConnect = await UserModel.findOne({email : 'maxime2@gmail.com'} );
+console.log(req.body.email , req.body.password)
+  var userConnect = await UserModel.findOne({email : req.body.email } );
   console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", userConnect)
  if(userConnect.password == req.body.password){
   res.json({isok:true}) 
