@@ -1,35 +1,30 @@
 var mongoose = require('mongoose');
 
-var banqueSchema = mongoose.Schema({
-  cryptograme : String,
-  dateValid : String,
-  numCarte : String
-})
+
 
 
 var userSchema = mongoose.Schema({
    email : String,
    nom : String,
-   documents : [String],
+   documents : Array,
    prenom : String,
-   photo : [String],
+   photo : Array,
    password : String,
-   adress : String,
-   ville : String,
-   codePostal : String,
+   adress : Object,
    telephone : String,
    status : Number,
    nSecu : String,
-   mutuel : String,
+   mutuel : Object,
    admin : Number,
-   idBanque : [banqueSchema],
+   idBanque : Object,
    StatusValide : Boolean,
-   DispoDate : Date,
+   DispoDate : Array,
+   copyDispoDate : Array,
    dispoNow : Boolean,
    plaqueImmat : String,
-   numPharma : String,
-   numDoc : String,
-   antecedent : String
+   SIREN : String,
+   antecedent : Array
+
  });
  
  var UserModel = mongoose.model('users', userSchema);

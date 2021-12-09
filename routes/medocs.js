@@ -28,15 +28,27 @@ let isExistOrCreateLower = (model, cle, value) => { //
     }
   })
 }
-
+// ******************
   const nbreAleatoire = (min,max)=>{
     return Math.floor(Math.random() * (max+1 - min) + min);
   }
 
+  const chainenNmbreAleatoire =(nbre)=>{
+    var chaine = ""
+    for (var i=0;i<nbre;i++){
+     chaine += nbreAleatoire(0,9)
+    }
+    return chaine
+  }
+
+console.log(chainenNmbreAleatoire(16))
+
+
+  
   const nbreReelAleatoire = (min,max)=>{
     return Math.random() * (max - min) + min;
   }
-
+// ******************
   const lettresAleatoire =(nbre)=>{
     var chaine = ""
     for (var i=0;i<nbre;i++){
