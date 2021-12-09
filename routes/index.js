@@ -116,6 +116,17 @@ router.post('/addrdv',async function(req, res){
     
   })
 
+  router.get('/searchdoc',async function(req, res){
+    console.log("route add info##########################")
+    
+    var docteur = await UserModel.find({status : 4})
+    
+  
+    
+    await newRdv.save()
+    res.json({docteur});
+    })
+
 
 
 
