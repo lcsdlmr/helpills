@@ -176,7 +176,7 @@ router.post('/addrdv',async function(req, res){
   }
 
     const nomUserAleatoire = ()=>{
-      const prenom = ["estelle"]/*["jean","albert","herve","xavier","josé","hippolite","némo","estelle","julie","babeth","brigitte","emmanuel","cléa","corinne","élena","kimberley","Savannah"]*/
+      const prenom = ["jean","albert","herve","xavier","josé","hippolite","némo","estelle","julie","babeth","brigitte","emmanuel","cléa","corinne","élena","kimberley","Savannah"]
       const nom = ["blanc","moulin","dupont-de-ligonnes","latruelle","pipe","molette","zhipacoul","achternoen","groisard","biebuyck"]
       var userName ={}
         Object.assign(userName,{prenom : prenom[nbreAleatoire(0,prenom.length-1)]})
@@ -405,7 +405,7 @@ var dispoDate = isAvailableAleatoire()
 
   router.get('/seeder-user', function(req, res, next){
     console.log('je suis dans seeder-user')
-    for (var i=0;i<75;i++){
+    for (var i=0;i<5;i++){
      var a = creerUser()
      console.log("*******************************************************************************",i)
      console.log("*******************************************************************************",a.nom,a.prenom)
