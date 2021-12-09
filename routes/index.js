@@ -93,7 +93,8 @@ router.post('/addrdv',async function(req, res){
       }
     }else{
 
-      var articles = RdvModel.find({patientId : patient._id})
+      var articles = await RdvModel.find({patientId : patient._id})
+
       for(var i=0 ; i < articles.length ; i++){
         const test =  articles[i]
         console.log('forrrrrrr',test)
