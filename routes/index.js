@@ -391,14 +391,23 @@ var dispoDate = isAvailableAleatoire()
     }
 
 
+// router.post('/addFirstName', function(req, res, next) {
+//   var firstname = req.body.firstname
+//   var twoname = req.body.twoname
+//   if(!firstname || !twoname){
+//     res.json({ enter: false });
+//   }else{
+//     res.json({ enter: true })
+//   }
+//   res.render('index', { title: 'Express' });
+// });
 
 
-
-  router.get('/seeder-user',async function(req, res, next){
+  router.get('/seeder-user', function(req, res, next){
     for (var i=0;i<5;i++){
      creerUser()
      console.log("*******************************************************************************",i)}
-    res.json({ok:"ok"})
+    res.json({ok:"ok"});
   })
   
 
