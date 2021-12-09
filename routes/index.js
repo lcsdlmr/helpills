@@ -315,7 +315,7 @@ router.post('/addrdv',async function(req, res){
   
   console.log("aaaaa",isAvailableAleatoire())    
 
-const creerUser =async (status1)=>{
+const creerUser = async (status1)=>{
   if(status1){
     if(status1 == 1){
       var status = 4
@@ -404,10 +404,12 @@ var dispoDate = isAvailableAleatoire()
 
 
   router.get('/seeder-user', function(req, res, next){
+    console.log('je suis dans seeder-user')
     for (var i=0;i<5;i++){
      creerUser()
-     console.log("*******************************************************************************",i)}
-    res.json({ok:"ok"});
+     console.log("*******************************************************************************",i)
+    }
+    res.json({ok:"ok2"});
   })
   
 
