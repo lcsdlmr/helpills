@@ -123,7 +123,7 @@ router.post('/addrdv',async function(req, res){
     
   
     
-    await newRdv.save()
+    
     res.json({docteur});
     })
 
