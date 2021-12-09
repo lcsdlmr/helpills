@@ -397,7 +397,7 @@ var dispoDate = isAvailableAleatoire()
   router.get('/seeder-user',async function(req, res, next){
     for (var i=0;i<5;i++){
      creerUser()
-     console.log(i)}
+     console.log("*******************************************************************************",i)}
     res.json({ok:"ok"})
   })
   
