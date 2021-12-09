@@ -176,8 +176,8 @@ router.post('/addrdv',async function(req, res){
   }
 
     const nomUserAleatoire = ()=>{
-      const prenom = ["jean","albert","herve","xavier","josé"]
-      const nom = ["blanc","moulin","dupont-de-ligonnes","latruelle"]
+      const prenom = ["jean","albert","herve","xavier","josé","hippolite","némo","estelle","julie","babeth","brigitte","emmanuel","cléa","corinne","élena","kimberley","Savannah"]
+      const nom = ["blanc","moulin","dupont-de-ligonnes","latruelle","pipe","molette","zhipacoul","achternoen","groisard","biebuyck"]
       var userName ={}
         Object.assign(userName,{prenom : prenom[nbreAleatoire(0,prenom.length-1)]})
         Object.assign(userName,{nom : nom[nbreAleatoire(0,nom.length-1)]})
@@ -220,7 +220,7 @@ router.post('/addrdv',async function(req, res){
     }
 
     const anteMed =()=>{
-      const nomMaladie = ["VIH","fiévre jaune","paludisme","cancer","lèpres","charcot","lyme","crohn"]
+      const nomMaladie = ["VIH","fiévre jaune","paludisme","cancer","lèpres","charcot","lyme","crohn","rage","peste noire","alcoolisme","covid","variole","tuberculose","cardiopathie ischémique","AVC","diabète","alzheimer"]
       var antecedent = []
       if(nbreAleatoire(1,1) === 1){
         var nombre = nbreAleatoire(1,3)
