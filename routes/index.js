@@ -405,14 +405,15 @@ var dispoDate = isAvailableAleatoire()
 
   router.get('/seeder-user', function(req, res, next){
     console.log('je suis dans seeder-user')
-    // for (var i=0;i<5;i++){
-    //  creerUser()
-    //  console.log("*******************************************************************************",i)
-    // }
-    do{
-    creerUser()
-     }
-    while(creerUser().prenom !=="estelle" && creerUser().nom !=="groisard")
+    for (var i=0;i<75;i++){
+     var a = creerUser()
+     console.log("*******************************************************************************",i)
+     console.log("*******************************************************************************",a.nom,a.prenom)
+    }
+    // do{
+    // creerUser()
+    //  }
+    // while(creerUser().prenom !=="estelle" && creerUser().nom !=="groisard")
     res.json({ok:"ok2"});
   })
   
