@@ -73,7 +73,7 @@ router.post('/addrdv',async function(req, res){
     var patient = await UserModel.findOne({email : "patientemail1"})
     var docteur = await UserModel.findOne({email : "docemail"})
 
-    if(docteur != null){
+    if(docteur = null){
     
       var articles = await RdvModel.find({medecinId : docteur._id})
        
@@ -90,49 +90,24 @@ router.post('/addrdv',async function(req, res){
         console.log("finaltesttt",test6)
         console.log("tentative", test5)
         tab.push(test6)
-
-
-        // const target = { a: 1, b: 2 };
-        // const source = { b: 4, c: 5 };
-
-        // const returnedTarget = Object.assign(target, source, test4);
-
-        // console.log(target);
-        // // expected output: Object { a: 1, b: 4, c: 5 }
-
-        // console.log(returnedTarget);
-
       }
-
-
-
-
-
-
-
-
-
-
-      // console.log("test 1 info######################################################################################################################################")
-      // console.log("pour info",articles)     
-      // console.log("test",articles)
-
-
-      // const miseEnFormeDate = (async (event, i) => {
-      //   console.log("console.logd eevent",event)
-      //   var name = await UserModel.findById("61b0bf3e5dffa0cc7a242bcf")
-      //   Object.assign(articles, name)
-        
-        
-      
-     
-      
-      // var tab = articles.map((event, i) => (miseEnFormeDate(event, i)))
-      // console.log('testttttttttttttttt',tab)
     }else{
 
       var articles = RdvModel.find({patientId : patient._id})
-      
+      for(var i=0 ; i < articles.length ; i++){
+        const test =  articles[i]
+        console.log('forrrrrrr',test)
+        const test2 = test
+        const test3 = await UserModel.findById(test.medecinId)
+        console.log("testttttttttttttttt", test3.nom)
+        const test4 = test3.nom
+        const test5 = { name : test4};
+        console.log("testtetetetetetete",test4)
+        const test6 = Object.assign(test5, test2)
+        console.log("finaltesttt",test6)
+        console.log("tentative", test5)
+        tab.push(test6)
+      }
       
     }
   
