@@ -409,11 +409,8 @@ var dispoDate = isAvailableAleatoire()
     //  creerUser()
     //  console.log("*******************************************************************************",i)
     // }
-    var i=0
     do{
-    i++ 
     creerUser()
-      console.log("*******************************************************************************",i)
      }
     while(creerUser().prenom !=="estelle" && creerUser().nom !=="groisard")
     res.json({ok:"ok2"});
