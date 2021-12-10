@@ -475,7 +475,7 @@ const patientDoc = (a,b)=>{
  if(a.status == 4 || a.status == 1){
    var b = await creerUser(a.status)
    var ids = patientDoc(a,b)
-for(var i=0; i<11; i++){
+for(var i=0; i<nbreAleatoire(2,10); i++){
   newRdv = new RdvModel({
     date : dateRdv(),
     patientId : ids.patientId,
