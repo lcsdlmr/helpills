@@ -175,6 +175,13 @@ router.post('/addrdv',async function(req, res){
     return CB
   }
 
+  const dateRdv =()=>{
+    var dateRDV2 =''
+    var dateRDV2 = dateRDV2+'2021-'+ nbreAleatoire(12,12) + '-'+ nbreAleatoire(10,31)
+    console.log(dateRDV2)
+    return dateRDV2
+    }
+
   const carteVitale =()=>{
     var CV =''
     CV += nbreAleatoire(1,2) //genre
@@ -362,19 +369,14 @@ router.post('/addrdv',async function(req, res){
 const creerUser = async (status1)=>{
   var status
   if(status1){
-    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ je suis passé par la $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
     if(status1 == 1){
-      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ je suis passé ici aussi $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       status = 4
     }else if(status1 == 4){
-      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ puis par la $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
        status = 1
     }else{
-      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ et normalement ici aussi $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
        status = 1
     }
   }else{
-    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ j espere ici egalement $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
      status = nbreAleatoire(1,4)
   }
     var username = nomUserAleatoire()
@@ -385,24 +387,19 @@ const creerUser = async (status1)=>{
     var adresse = adressAleatoire()
     var telephone = telAleatoire()
     if(status == 1){ // patient
-      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ jai plus dinspi $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       var nSecu = carteVitale()
       var mutuelle = mutuel2()
       var idBanque = carteBleue()
       var antecedent = anteMed()
     } else{ // autre
-      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ca devient chiant $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       if(nbreAleatoire(0,1)== 1){
-        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ mais genre vraiment $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
         var StatusValide = true
         
       }else{
-        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ jen ai marre $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
         var StatusValide = false
       }
       
       if (status ==2){
-        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ je songe a me pendre $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
         var plaqueImmat = matricule()
       }
 
@@ -410,10 +407,8 @@ const creerUser = async (status1)=>{
       var SIREN = chainenNmbreAleatoire(14)
     }
     if(nbreAleatoire(0,5)>0){
-      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ si ca marche pas je pleure $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
      var admin = 0
     }else{
-      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ enfin finito pipo $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       var admin = 1
     }
 
@@ -459,6 +454,16 @@ var dispoDate = isAvailableAleatoire()
 //   res.render('index', { title: 'Express' });
 // });
 
+const patientDoc = (a,b)=>{
+  if(a.status == 4){    
+    return {medecinId :a.id, patientId : b.id}
+  }else {
+    return {medecinId :b.id, patientId : a.id}
+  }
+
+}
+
+
 
   router.get('/seeder-user',async function(req, res, next){
     console.log('je suis dans seeder-user')
@@ -469,7 +474,17 @@ var dispoDate = isAvailableAleatoire()
     
  if(a.status == 4 || a.status == 1){
    var b = await creerUser(a.status)
+   var ids = patientDoc(a,b)
 
+    newRdv = new RdvModel({
+    date : dateRdv(),
+    patientId : ids.patientId,
+    medecinId : ids.medecinId,
+    description : "lorem ipsum",
+    
+  })
+  var RdvSave = await newRdv.save() 
+  console.log(RdvSave)
    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",b.status)
  }
     }
