@@ -475,14 +475,16 @@ const patientDoc = (a,b)=>{
  if(a.status == 4 || a.status == 1){
    var b = await creerUser(a.status)
    var ids = patientDoc(a,b)
-
-    newRdv = new RdvModel({
+for(var i=0; i<11; i++){
+  newRdv = new RdvModel({
     date : dateRdv(),
     patientId : ids.patientId,
     medecinId : ids.medecinId,
     description : "lorem ipsum",
     
   })
+}
+    
   var RdvSave = await newRdv.save() 
   console.log(RdvSave)
    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",b.status)
