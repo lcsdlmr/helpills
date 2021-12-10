@@ -451,8 +451,9 @@ var dispoDate = isAvailableAleatoire()
     console.log('je suis dans seeder-user')
     for (var i=0;i<5;i++){
      var a = creerUser()
+ 
      console.log("*******************************************************************************",i)
-     console.log("*******************************************************************************",a.nom,a.prenom)
+     console.log("*******************************************************************************",a)
     }
     // do{
     // creerUser()
