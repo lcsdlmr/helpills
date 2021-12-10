@@ -452,12 +452,14 @@ var dispoDate = isAvailableAleatoire()
     console.log('je suis dans seeder-user')
     for (var i=0;i<5;i++){
      var a = await creerUser()
+
+     console.log("*******************************************************************************",a.status)
+    
  if(a.status == 4 || a.status == 1){
    var b = await creerUser(a.status)
-   console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",b)
+
+   console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",b.status)
  }
-     console.log("*******************************************************************************",i)
-     console.log("*******************************************************************************",a.status)
     }
     // do{
     // creerUser()
