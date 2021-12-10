@@ -89,12 +89,12 @@ router.post('/addrdv',async function(req, res){
   res.json({newRdv});
   })
 
-  router.get('/recepRdv', async function(req,res,next){
+  router.post('/recepRdv', async function(req,res,next){
     var articles = {}
     var tab = []
     
-    var patient = await UserModel.findOne({email : "patientemail1"})
-    var docteur = await UserModel.findOne({email : "docemail"})
+    var patient = await UserModel.findOne({email : req.body.email})
+    var docteur = await UserModel.findOne({email : req.body.email})
 
     if(docteur = null){
     
