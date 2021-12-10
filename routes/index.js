@@ -431,7 +431,8 @@ var dispoDate = isAvailableAleatoire()
       copyDispoDate:dispoDate
     })
   var userSave = await newUser.save() 
-      console.log(userSave)      
+      console.log(userSave)   
+      return userSave   
     }
 
 
