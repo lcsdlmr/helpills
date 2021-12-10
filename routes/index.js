@@ -361,14 +361,19 @@ router.post('/addrdv',async function(req, res){
 
 const creerUser = async (status1)=>{
   if(status1){
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ je suis passé par la $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
     if(status1 == 1){
+      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ je suis passé ici aussi $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       var status = 4
     }else if(status1 == 4){
+      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ puis par la $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       var status = 1
     }else{
+      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ et normalement ici aussi $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       var status = 1
     }
   }else{
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ j espere ici egalement $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
     var status = nbreAleatoire(1,4)
   }
     var username = nomUserAleatoire()
@@ -380,19 +385,24 @@ const creerUser = async (status1)=>{
     var telephone = telAleatoire()
     var status = nbreAleatoire(1,4)
     if(status == 1){ // patient
+      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ jai plus dinspi $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       var nSecu = carteVitale()
       var mutuelle = mutuel2()
       var idBanque = carteBleue()
       var antecedent = anteMed()
     } else{ // autre
+      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ca devient chiant $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       if(nbreAleatoire(0,1)== 1){
+        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ mais genre vraiment $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
         var StatusValide = true
         
       }else{
+        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ jen ai marre $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
         var StatusValide = false
       }
       
       if (status ==2){
+        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ je songe a me pendre $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
         var plaqueImmat = matricule()
       }
 
@@ -400,8 +410,10 @@ const creerUser = async (status1)=>{
       var SIREN = chainenNmbreAleatoire(14)
     }
     if(nbreAleatoire(0,5)>0){
+      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ si ca marche pas je pleure $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
      var admin = 0
     }else{
+      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ enfin finito pipo $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       var admin = 1
     }
 
