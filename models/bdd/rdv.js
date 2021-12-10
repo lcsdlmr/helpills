@@ -14,7 +14,7 @@ date : Date,
 patientId : {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
 medecinId: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
 Photo: String,
-descritpion : String,
+description : String,
 validite : String,
 prescription : [prescriptionSchema]
  });

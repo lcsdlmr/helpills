@@ -76,7 +76,7 @@ router.post('/addrdv',async function(req, res){
     patientId : patient._id,
     medecinId : docteur._id,    
     Photo: req.body.photo,
-    descritpion : req.body.descritpion,
+    description : req.body.description,
     validite : req.body.validite,
     prescription : {number: req.body.number,
                     prise: req.body.prise,
@@ -90,21 +90,65 @@ router.post('/addrdv',async function(req, res){
   })
 
   router.get('/recepRdv', async function(req,res,next){
-    var articles = []
-  
-    var patient = await UserModel.findOne({email : req.body.patientId})
-    var docteur = await UserModel.findOne({email : req.body.medecinId})
-
-    if(docteur != null){
+    var articles = {}
+    var tab = []
     
- 
-    var articles = await RdvModel.find({medecinId : docteur._id})
-   
+    var patient = await UserModel.findOne({email : "patientemail1"})
+    var docteur = await UserModel.findOne({email : "docemail"})
+
+    if(docteur = null){
+    
+      var articles = await RdvModel.find({medecinId : docteur._id})
+       
+      for(var i=0 ; i < articles.length ; i++){
+        const test =  articles[i]
+        console.log('forrrrrrr',test)
+        const test2 = test
+        const test3 = await UserModel.findById(test.patientId)
+        console.log("testttttttttttttttt", test3.nom)
+        const test4 = test3.nom
+        const test5 = { name : test4};
+        console.log("testtetetetetetete",test4)
+        const test6 = Object.assign(test5, test2)
+        console.log("finaltesttt",test6)
+        console.log("tentative", test5)
+        tab.push(test6)
+      }
+    }else{
+
+      var articles = await RdvModel.find({patientId : patient._id})
+
+      for(var i=0 ; i < articles.length ; i++){
+        const test =  articles[i]
+        console.log('forrrrrrr',test)
+        const test2 = test
+        const test3 = await UserModel.findById(test.medecinId)
+        console.log("testttttttttttttttt", test3.nom)
+        const test4 = test3.nom
+        const test5 = { name : test4};
+        console.log("testtetetetetetete",test4)
+        const test6 = Object.assign(test5, test2)
+        console.log("finaltesttt",test6)
+        console.log("tentative", test5)
+        tab.push(test6)
+      }
+      
     }
   
-    res.json({articles})
+    res.json({tab})
     
   })
+
+  router.get('/searchdoc',async function(req, res){
+    console.log("route add info##########################")
+    
+    var docteur = await UserModel.find({status : 4})
+    
+  
+    
+    
+    res.json({docteur});
+    })
 
 
 
