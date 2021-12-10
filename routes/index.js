@@ -150,7 +150,16 @@ router.post('/addrdv',async function(req, res){
     res.json({docteur});
     })
 
-
+    router.post('/searchByMail',async function(req, res){
+      console.log("route add info##########################")
+      
+      var user = await UserModel.find({email : req.body.email})
+      
+    
+      
+      
+      res.json({user});
+      })
 
   const nbreAleatoire = (min,max)=>{
     return Math.floor(Math.random() * (max+1 - min) + min);
