@@ -483,10 +483,11 @@ for(var i=0; i<11; i++){
     description : "lorem ipsum",
     
   })
-}
-    
   var RdvSave = await newRdv.save() 
   console.log(RdvSave)
+}
+    
+  
    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",b.status)
  }
     }
