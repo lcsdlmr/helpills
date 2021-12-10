@@ -360,21 +360,22 @@ router.post('/addrdv',async function(req, res){
   console.log("aaaaa",isAvailableAleatoire())    
 
 const creerUser = async (status1)=>{
+  var status
   if(status1){
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ je suis passé par la $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
     if(status1 == 1){
       console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ je suis passé ici aussi $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-      var status = 4
+      status = 4
     }else if(status1 == 4){
       console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ puis par la $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-      var status = 1
+       status = 1
     }else{
       console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ et normalement ici aussi $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-      var status = 1
+       status = 1
     }
   }else{
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ j espere ici egalement $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-    var status = nbreAleatoire(1,4)
+     status = nbreAleatoire(1,4)
   }
     var username = nomUserAleatoire()
     var prenom = username.prenom
@@ -383,7 +384,6 @@ const creerUser = async (status1)=>{
     var password = passwordAleatoire(nbreAleatoire(5,8))
     var adresse = adressAleatoire()
     var telephone = telAleatoire()
-    var status = nbreAleatoire(1,4)
     if(status == 1){ // patient
       console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ jai plus dinspi $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
       var nSecu = carteVitale()
