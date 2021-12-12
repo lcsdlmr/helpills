@@ -154,13 +154,33 @@ router.post('/addrdv',async function(req, res){
     router.post('/searchuser',async function(req, res){
       console.log("route add info##########################")
       
-      var users = await UserModel.findOne({email : req.body.email})
+      var users = await UserModel.findOne({email : req.body.email},{$push:{
+        number: req.body.number,
+        prise: req.body.prise,
+        duree: req.body.duree,
+        autre: req.body.autre,}})
       
     
       
       
       res.json({users});
       })
+
+
+      router.post('/addpresciption',async function(req, res){
+        console.log("route add info##########################")
+        
+        await RdvModel.updateOne({_id : req.body.email},)
+        
+      
+        
+        
+        res.json({users});
+        })
+
+
+
+
 
 
 
