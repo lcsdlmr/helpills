@@ -162,9 +162,31 @@ router.post('/addrdv',async function(req, res){
       res.json({users});
       })
 
+      router.post('/recepprescription',async function(req, res){
+        console.log("route add info##########################")
+
+        var prescription = await RdvModel.updateOne({ patientId : req.body.id})
+
+        if(prescription == null){
+          var prescription = await RdvModel.updateOne({ medecinId : req.body.id})
+          
+        } else {
+          var prescription = await RdvModel.updateOne({ patientId : req.body.id})
+        }
+        
+        
+        
+          console.log(prescription)
+        
+        
+        res.json({prescription});
+        })
+
+
+
 
       router.post('/addprescription',async function(req, res){
-        console.log("route add info##########################")
+        
         
         var prescription = await RdvModel.updateOne({ _id : req.body.id , },{$push:{prescription: {
           number: req.body.number,
