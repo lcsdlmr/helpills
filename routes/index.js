@@ -71,7 +71,7 @@ router.post('/addrdv',async function(req, res){
   
 
   if(patient != null){
-    newRdv = new RdvModel({
+    newRdv1 = new RdvModel({
     date : req.body.date,
     patientId : patient._id,
     medecinId : docteur._id,    
@@ -85,7 +85,7 @@ router.post('/addrdv',async function(req, res){
                     }
 
   })}
-  var newRdv = await newRdv.save()
+  var newRdv = await newRdv1.save()
   res.json({newRdv});
   })
 
