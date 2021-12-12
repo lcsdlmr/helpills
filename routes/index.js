@@ -151,6 +151,17 @@ router.post('/addrdv',async function(req, res){
     res.json({docteur});
     })
 
+    router.post('/searchuser',async function(req, res){
+      console.log("route add info##########################")
+      
+      var users = await UserModel.findOne({email : req.body.email})
+      
+    
+      
+      
+      res.json({docteur});
+      })
+
 
 
   const nbreAleatoire = (min,max)=>{
