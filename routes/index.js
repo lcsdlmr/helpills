@@ -165,13 +165,13 @@ router.post('/addrdv',async function(req, res){
       router.post('/recepprescription',async function(req, res){
         console.log("route add info##########################")
 
-        var prescription = await RdvModel.updateOne({ patientId : req.body.id})
+        var prescription = await RdvModel.findOne({ patientId : req.body.id})
 
         if(prescription == null){
-          var prescription = await RdvModel.updateOne({ medecinId : req.body.id})
+          var prescription = await RdvModel.find({ medecinId : req.body.id})
           
         } else {
-          var prescription = await RdvModel.updateOne({ patientId : req.body.id})
+          var prescription = await RdvModel.find({ patientId : req.body.id})
         }
         
         
