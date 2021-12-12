@@ -166,11 +166,11 @@ router.post('/addrdv',async function(req, res){
       router.post('/addprescription',async function(req, res){
         console.log("route add info##########################")
         
-        var prescription = await RdvModel.updateOne({ _id : req.body.id},{$push:{
+        var prescription = await RdvModel.updateOne({ _id : req.body.id , },{$push:{prescription: {
           number: req.body.number,
           prise: req.body.prise,
           duree: req.body.duree,
-          autre: req.body.autre,}})
+          autre: req.body.autre,}}})
         
           console.log(prescription)
         
