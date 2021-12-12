@@ -154,11 +154,7 @@ router.post('/addrdv',async function(req, res){
     router.post('/searchuser',async function(req, res){
       console.log("route add info##########################")
       
-      var users = await UserModel.findOne({email : req.body.email},{$push:{
-        number: req.body.number,
-        prise: req.body.prise,
-        duree: req.body.duree,
-        autre: req.body.autre,}})
+      var users = await UserModel.findOne({email : req.body.email})
       
     
       
@@ -170,7 +166,11 @@ router.post('/addrdv',async function(req, res){
       router.post('/addpresciption',async function(req, res){
         console.log("route add info##########################")
         
-        await RdvModel.updateOne({_id : req.body.email},)
+        await RdvModel.updateOne({_id : req.body.id},{$push:{
+          number: req.body.number,
+          prise: req.body.prise,
+          duree: req.body.duree,
+          autre: req.body.autre,}})
         
       
         
