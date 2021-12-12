@@ -159,7 +159,7 @@ router.post('/addrdv',async function(req, res){
     
       
       
-      res.json({docteur});
+      res.json({users});
       })
 
 
