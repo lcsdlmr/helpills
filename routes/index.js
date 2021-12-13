@@ -158,7 +158,7 @@ router.post('/addrdv',async function(req, res){
 
       if(users == null){
 
-        var users = await UserModel.findOne({_id : req.body.id}) 
+        var users = await UserModel.findOne({ _id : req.body.email}) 
       }
       
     
