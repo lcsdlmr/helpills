@@ -155,6 +155,11 @@ router.post('/addrdv',async function(req, res){
       
       
       var users = await UserModel.findOne({email : req.body.email})
+
+      if(users == null){
+
+        var users = await UserModel.findOne({_id : req.body.id}) 
+      }
       
     
       
@@ -181,6 +186,26 @@ router.post('/addrdv',async function(req, res){
         
         res.json({prescription});
         })
+
+        router.post('/recepMyprescription',async function(req, res){
+          console.log("route add info##########################")
+  
+          var prescription = await RdvModel.findOne({ _id : req.body.id})
+  
+          if(prescription == null){
+            var prescription = await RdvModel.findOne({ _id : req.body.id})
+            
+          } else {
+            var prescription = await RdvModel.findOne({ _id : req.body.id})
+          }
+          
+          
+          
+            console.log(prescription)
+          
+          
+          res.json({prescription});
+          })
 
 
 
