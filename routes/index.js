@@ -99,7 +99,7 @@ router.post('/addrdv',async function(req, res){
     var docteur = await UserModel.findOne({status : 4 ,email : req.body.email})
     console.log("*****************************************docteur***************", docteur)
 
-    if(docteur = null){
+    if(docteur != null){
       console.log("je suis passer par le medecin")
       var articles = await RdvModel.find({medecinId : docteur._id})
        
