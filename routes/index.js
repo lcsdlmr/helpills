@@ -118,7 +118,7 @@ router.post('/addrdv',async function(req, res){
     }else{
       console.log("je suis passer par le patient")
       var articles = await RdvModel.find({patientId : patient._id})
-
+      console.log("test info retour", articles)
       for(var i=0 ; i < articles.length ; i++){
         const test =  articles[i]
         console.log('forrrrrrr',test)
