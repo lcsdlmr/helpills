@@ -98,7 +98,7 @@ router.post('/addrdv',async function(req, res){
 
 
     if(docteur = null){
-    
+      console.log("je suis passer par le medecin")
       var articles = await RdvModel.find({medecinId : docteur._id})
        
       for(var i=0 ; i < articles.length ; i++){
@@ -116,7 +116,7 @@ router.post('/addrdv',async function(req, res){
         tab.push(test6)
       }
     }else{
-
+      console.log("je suis passer par le patient")
       var articles = await RdvModel.find({patientId : patient._id})
 
       for(var i=0 ; i < articles.length ; i++){
