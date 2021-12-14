@@ -16,14 +16,14 @@ router.get('/', function(req, res, next) {
 router.post('/inscription',async function(req, res){
   console.log('*************************************************')
   
-  const hash = bcrypt.hashSync(myPlaintextPassword, 10);
+  // const hash = bcrypt.hashSync(myPlaintextPassword, 10);
   var compteExistant = await UserModel.findOne({ email: req.body.email });
   if(compteExistant === null){
   newUser = new UserModel({
     email : req.body.email,
     nom : req.body.nom,
     prenom : req.body.prenom,
-    password : hash,
+    password : req.body.password,
     status : req.body.status,
     plaqueImmat : req.body.plaqueImmat,
     numPharma : req.body.numPharma,
