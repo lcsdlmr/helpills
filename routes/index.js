@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var UserModel = require('../models/bdd/users')
 var RdvModel = require('../models/bdd/rdv')
+var bcrypt = require('bcrypt');
+var uid2 = require('uid2');
+
 
 
 /* GET home page. */
@@ -13,13 +16,14 @@ router.get('/', function(req, res, next) {
 router.post('/inscription',async function(req, res){
   console.log('*************************************************')
   
+  const hash = bcrypt.hashSync(myPlaintextPassword, 10);
   var compteExistant = await UserModel.findOne({ email: req.body.email });
   if(compteExistant === null){
   newUser = new UserModel({
     email : req.body.email,
     nom : req.body.nom,
     prenom : req.body.prenom,
-    password : req.body.password,
+    password : hash,
     status : req.body.status,
     plaqueImmat : req.body.plaqueImmat,
     numPharma : req.body.numPharma,
