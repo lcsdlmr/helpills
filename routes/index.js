@@ -94,8 +94,10 @@ router.post('/addrdv',async function(req, res){
     var tab = []
     
     var patient = await UserModel.findOne({email : req.body.email})
-    var docteur = await UserModel.findOne({email : req.body.email})
 
+    console.log("*****************************************patient***************", patient)
+    var docteur = await UserModel.findOne({email : req.body.email})
+    console.log("*****************************************docteur***************", docteur)
 
     if(docteur = null){
       console.log("je suis passer par le medecin")
