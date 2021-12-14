@@ -93,10 +93,10 @@ router.post('/addrdv',async function(req, res){
     var articles = {}
     var tab = []
     
-    var patient = await UserModel.findOne({email : req.body.email})
+    var patient = await UserModel.findOne({status : 1 , email : req.body.email})
 
     console.log("*****************************************patient***************", patient)
-    var docteur = await UserModel.findOne({email : req.body.email})
+    var docteur = await UserModel.findOne({status : 4 ,email : req.body.email})
     console.log("*****************************************docteur***************", docteur)
 
     if(docteur = null){
