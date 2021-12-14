@@ -68,10 +68,10 @@ router.post('/addrdv',async function(req, res){
   console.log("route add info##########################")
   var patient = await UserModel.findOne({email : req.body.patientId})
   var docteur = await UserModel.findOne({email : req.body.medecinId})
-  console.log(newRdv)
+  
 
   if(patient != null){
-    newRdv = new RdvModel({
+    newRdv1 = new RdvModel({
     date : req.body.date,
     patientId : patient._id,
     medecinId : docteur._id,    
@@ -85,7 +85,7 @@ router.post('/addrdv',async function(req, res){
                     }
 
   })}
-  await newRdv.save()
+  var newRdv = await newRdv1.save()
   res.json({newRdv});
   })
 
@@ -141,7 +141,7 @@ router.post('/addrdv',async function(req, res){
   })
 
   router.get('/searchdoc',async function(req, res){
-    console.log("route add info##########################")
+    
     
     var docteur = await UserModel.find({status : 4})
     
@@ -151,16 +151,85 @@ router.post('/addrdv',async function(req, res){
     res.json({docteur});
     })
 
-    router.post('/searchByMail',async function(req, res){
-      console.log("route add info##########################")
+    router.post('/searchuser',async function(req, res){
       
-      var user = await UserModel.find({email : req.body.email})
+      
+      var users = await UserModel.findOne({email : req.body.email})
+
+      if(users == null){
+
+        var users = await UserModel.findOne({ _id : req.body.email}) 
+      }
       
     
       
       
-      res.json({user});
+      res.json({users});
       })
+
+      router.post('/recepprescription',async function(req, res){
+        console.log("route add info##########################")
+
+        var prescription = await RdvModel.findOne({ patientId : req.body.id})
+
+        if(prescription == null){
+          var prescription = await RdvModel.find({ medecinId : req.body.id})
+          
+        } else {
+          var prescription = await RdvModel.find({ patientId : req.body.id})
+        }
+        
+        
+        
+          console.log(prescription)
+        
+        
+        res.json({prescription});
+        })
+
+        router.post('/recepMyprescription',async function(req, res){
+          console.log("route add info##########################")
+  
+          var prescription = await RdvModel.findOne({ _id : req.body.id})
+  
+          if(prescription == null){
+            var prescription = await RdvModel.findOne({ _id : req.body.id})
+            
+          } else {
+            var prescription = await RdvModel.findOne({ _id : req.body.id})
+          }
+          
+          
+          
+            console.log(prescription)
+          
+          
+          res.json({prescription});
+          })
+
+
+
+
+      router.post('/addprescription',async function(req, res){
+        
+        
+        var prescription = await RdvModel.updateOne({ _id : req.body.id , },{$push:{prescription: {
+          number: req.body.number,
+          prise: req.body.prise,
+          duree: req.body.duree,
+          autre: req.body.autre,}}})
+        
+          console.log(prescription)
+        
+        
+        res.json({prescription});
+        })
+
+
+
+
+
+
 
   const nbreAleatoire = (min,max)=>{
     return Math.floor(Math.random() * (max+1 - min) + min);
@@ -477,7 +546,7 @@ const patientDoc = (a,b)=>{
 
   router.get('/seeder-user',async function(req, res, next){
     console.log('je suis dans seeder-user')
-    for (var i=0;i<5;i++){
+    for (var i=0;i<6;i++){
      var a = await creerUser()
 
      console.log("*******************************************************************************",a.status)
