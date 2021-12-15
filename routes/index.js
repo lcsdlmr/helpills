@@ -84,7 +84,7 @@ router.post('/connection', async function(req, res){
 
   console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", userConnect)
 
- if(bcrypt.compareSync(password, user.password)){
+ if(bcrypt.compareSync(req.body.password, userConnect.password)){
   res.json({isok:true}) 
  }else{
   res.json({isok:false})
