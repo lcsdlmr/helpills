@@ -50,15 +50,15 @@ res.json({isok:true, userSave:userSave})
 
 
 router.post('/connection', async function(req, res){
-console.log(req.body.email , req.body.password, "*************************************************************")
+
   var userConnect = await UserModel.findOne({email : req.body.email } );
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", userConnect)
+  
  if(userConnect.password == req.body.password){
   res.json({isok:true}) 
  }else{
   res.json({isok:false})
  }
- console.log("************************************************************************************************",isok)
+ 
 
 
 })
@@ -78,11 +78,7 @@ router.post('/addrdv',async function(req, res){
     Photo: req.body.photo,
     description : req.body.description,
     validite : req.body.validite,
-    prescription : {number: req.body.number,
-                    prise: req.body.prise,
-                    duree: req.body.duree,
-                    autre: req.body.autre,
-                    }
+    
 
   })}
   var newRdv = await newRdv1.save()
