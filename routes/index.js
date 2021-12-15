@@ -17,8 +17,6 @@ router.post('/inscription',async function(req, res){
   console.log('*************************************************')
   
   var error = []
-  var result = false
-  var userSave = null
   const cost = 10;
   const hash = bcrypt.hashSync(req.body.passwordFromFront, cost);
  
@@ -49,12 +47,11 @@ router.post('/inscription',async function(req, res){
   })
 
   
-  if(userSave){
-    result = true
-  }
   
-  userSave = await newUser.save()
-console.log(userSave)
+  
+  var userSave = await newUser.save()
+
+  console.log(userSave)
 res.json({isok:true, userSave:userSave})
 
   }else{
