@@ -3,7 +3,6 @@ var router = express.Router();
 var UserModel = require('../models/bdd/users')
 var RdvModel = require('../models/bdd/rdv')
 var bcrypt = require('bcrypt');
-var uid2 = require('uid2');
 
 
 
@@ -30,7 +29,6 @@ router.post('/inscription',async function(req, res){
     nom : req.body.nom,
     prenom : req.body.prenom,
     password : hash,
-    token: uid2(32),
     status : req.body.status,
     plaqueImmat : req.body.plaqueImmat,
     numPharma : req.body.numPharma,
@@ -87,7 +85,7 @@ router.post('/connection', async function(req, res){
 
   console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", userConnect)
 
- if(bcrypt.compareSync(password, userConnect.password)){
+ if(bcrypt.compareSync(password, user.password)){
   res.json({isok:true}) 
  }else{
   res.json({isok:false})
