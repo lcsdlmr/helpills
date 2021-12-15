@@ -48,6 +48,11 @@ router.post('/inscription',async function(req, res){
 
   })
 
+  
+  if(userSave){
+    result = true
+  }
+  
   userSave = await newUser.save()
 console.log(userSave)
 res.json({isok:true, userSave:userSave})
@@ -58,18 +63,16 @@ res.json({isok:true, userSave:userSave})
   error.push('utilisateur déjà présent')
 }
 
-if(req.body.nom == ''
-  || req.body.email == ''
-  || req.body.password == ''
-  || req.body.status == 0
-  || req.body.adress == ''
-  ){
-    error.push('champs vides')
-  }
+// if(req.body.nom == ''
+//   || req.body.email == ''
+//   || req.body.password == ''
+//   || req.body.status == 0
+//   || req.body.adress == ''
+//   ){
+//     error.push('champs vides')
+//   }
 
-  if(userSave){
-    result = true
-  }
+  
 
 
 
