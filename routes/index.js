@@ -78,6 +78,8 @@ router.post('/addrdv',async function(req, res){
     Photo: req.body.photo,
     description : req.body.description,
     validite : req.body.validite,
+    prescription :{}
+
     
 
   })}
