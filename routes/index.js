@@ -14,11 +14,10 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/inscription',async function(req, res){
-  console.log('*************************************************')
-  
+   
   var error = []
   const cost = 10;
-  const hash = bcrypt.hashSync(req.body.passwordFromFront, cost);
+  const hash = bcrypt.hashSync(req.body.password, cost);
  
   var compteExistant = await UserModel.findOne({ email: req.body.email });
   if(compteExistant === null){
