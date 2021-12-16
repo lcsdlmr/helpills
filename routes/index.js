@@ -90,7 +90,7 @@ router.post('/connection', async function(req, res){
   res.json({isok:false})
   error.push('email ou mot de passe incorrect')
  }
- console.log("************************************************************************************************",isok)
+ 
 
 
 })
@@ -110,11 +110,7 @@ router.post('/addrdv',async function(req, res){
     Photo: req.body.photo,
     description : req.body.description,
     validite : req.body.validite,
-    prescription : {number: req.body.number,
-                    prise: req.body.prise,
-                    duree: req.body.duree,
-                    autre: req.body.autre,
-                    }
+    
 
   })}
   var newRdv = await newRdv1.save()
@@ -125,12 +121,14 @@ router.post('/addrdv',async function(req, res){
     var articles = {}
     var tab = []
     
-    var patient = await UserModel.findOne({email : req.body.email})
-    var docteur = await UserModel.findOne({email : req.body.email})
+    var patient = await UserModel.findOne({status : 1 , email : req.body.email})
 
+    console.log("*****************************************patient***************", patient)
+    var docteur = await UserModel.findOne({status : 4 ,email : req.body.email})
+    console.log("*****************************************docteur***************", docteur)
 
-    if(docteur = null){
-    
+    if(docteur != null){
+      console.log("je suis passer par le medecin")
       var articles = await RdvModel.find({medecinId : docteur._id})
        
       for(var i=0 ; i < articles.length ; i++){
@@ -148,9 +146,9 @@ router.post('/addrdv',async function(req, res){
         tab.push(test6)
       }
     }else{
-
+      console.log("je suis passer par le patient")
       var articles = await RdvModel.find({patientId : patient._id})
-
+      console.log("test info retour", articles)
       for(var i=0 ; i < articles.length ; i++){
         const test =  articles[i]
         console.log('forrrrrrr',test)
