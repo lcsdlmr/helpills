@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var UserModel = require('../models/bdd/users')
 var RdvModel = require('../models/bdd/rdv')
+var bcrypt = require('bcrypt');
+
+
 
 
 /* GET home page. */
@@ -13,13 +16,19 @@ router.get('/', function(req, res, next) {
 router.post('/inscription',async function(req, res){
   console.log('*************************************************')
   
+  var error = []
+  var result = false
+  var userSave = null
+  const cost = 10;
+  const hash = bcrypt.hashSync(req.body.passwordFromFront, cost);
+ 
   var compteExistant = await UserModel.findOne({ email: req.body.email });
   if(compteExistant === null){
   newUser = new UserModel({
     email : req.body.email,
     nom : req.body.nom,
     prenom : req.body.prenom,
-    password : req.body.password,
+    password : hash,
     status : req.body.status,
     plaqueImmat : req.body.plaqueImmat,
     numPharma : req.body.numPharma,
@@ -38,25 +47,49 @@ router.post('/inscription',async function(req, res){
                numCarte : req.body.numCarte},
 
   })
-var userSave = await newUser.save()
+
+  userSave = await newUser.save()
 console.log(userSave)
 res.json({isok:true, userSave:userSave})
-}else{
+
+  }else{
   res.json({isok:false})
   console.log("€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€")
+  error.push('utilisateur déjà présent')
 }
+
+if(req.body.nom == ''
+  || req.body.email == ''
+  || req.body.password == ''
+  || req.body.status == 0
+  || req.body.adress == ''
+  ){
+    error.push('champs vides')
+  }
+
+  if(userSave){
+    result = true
+  }
+
+
 
 })
 
 
 router.post('/connection', async function(req, res){
 
+  console.log(req.body.email , req.body.password, "*************************************************************")
+ 
+  var error = []
   var userConnect = await UserModel.findOne({email : req.body.email } );
-  
- if(userConnect.password == req.body.password){
+
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", userConnect)
+
+ if(bcrypt.compareSync(password, user.password)){
   res.json({isok:true}) 
  }else{
   res.json({isok:false})
+  error.push('email ou mot de passe incorrect')
  }
  
 
@@ -252,6 +285,13 @@ router.post('/addrdv',async function(req, res){
     return CB
   }
 
+  const dateRdv =()=>{
+    var dateRDV2 =''
+    var dateRDV2 = dateRDV2+'2021-'+ nbreAleatoire(12,12) + '-'+ nbreAleatoire(10,31)
+    console.log(dateRDV2)
+    return dateRDV2
+    }
+
   const carteVitale =()=>{
     var CV =''
     CV += nbreAleatoire(1,2) //genre
@@ -437,16 +477,17 @@ router.post('/addrdv',async function(req, res){
   console.log("aaaaa",isAvailableAleatoire())    
 
 const creerUser = async (status1)=>{
+  var status
   if(status1){
     if(status1 == 1){
-      var status = 4
+      status = 4
     }else if(status1 == 4){
-      var status = 1
+       status = 1
     }else{
-      var status = 1
+       status = 1
     }
   }else{
-    var status = nbreAleatoire(1,4)
+     status = nbreAleatoire(1,4)
   }
     var username = nomUserAleatoire()
     var prenom = username.prenom
@@ -455,7 +496,6 @@ const creerUser = async (status1)=>{
     var password = passwordAleatoire(nbreAleatoire(5,8))
     var adresse = adressAleatoire()
     var telephone = telAleatoire()
-    var status = nbreAleatoire(1,4)
     if(status == 1){ // patient
       var nSecu = carteVitale()
       var mutuelle = mutuel2()
@@ -508,7 +548,8 @@ var dispoDate = isAvailableAleatoire()
       copyDispoDate:dispoDate
     })
   var userSave = await newUser.save() 
-      console.log(userSave)      
+      console.log(userSave)   
+      return userSave   
     }
 
 
@@ -523,13 +564,42 @@ var dispoDate = isAvailableAleatoire()
 //   res.render('index', { title: 'Express' });
 // });
 
+const patientDoc = (a,b)=>{
+  if(a.status == 4){    
+    return {medecinId :a.id, patientId : b.id}
+  }else {
+    return {medecinId :b.id, patientId : a.id}
+  }
 
-  router.get('/seeder-user', function(req, res, next){
+}
+
+
+
+  router.get('/seeder-user',async function(req, res, next){
     console.log('je suis dans seeder-user')
-    for (var i=0;i<5;i++){
-     var a = creerUser()
-     console.log("*******************************************************************************",i)
-     console.log("*******************************************************************************",a.nom,a.prenom)
+    for (var i=0;i<6;i++){
+     var a = await creerUser()
+
+     console.log("*******************************************************************************",a.status)
+    
+ if(a.status == 4 || a.status == 1){
+   var b = await creerUser(a.status)
+   var ids = patientDoc(a,b)
+for(var i=0; i<nbreAleatoire(2,10); i++){
+  newRdv = new RdvModel({
+    date : dateRdv(),
+    patientId : ids.patientId,
+    medecinId : ids.medecinId,
+    description : "lorem ipsum",
+    
+  })
+  var RdvSave = await newRdv.save() 
+  console.log(RdvSave)
+}
+    
+  
+   console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",b.status)
+ }
     }
     // do{
     // creerUser()

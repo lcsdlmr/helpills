@@ -23,7 +23,8 @@ var userSchema = mongoose.Schema({
    dispoNow : Boolean,
    plaqueImmat : String,
    SIREN : String,
-   antecedent : Array
+   antecedent : Array,
+   token : String
 
  });
  
