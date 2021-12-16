@@ -50,39 +50,26 @@ router.post('/inscription',async function(req, res){
   
   var userSave = await newUser.save()
 
-  console.log(userSave)
+ 
 res.json({isok:true, userSave:userSave})
 
   }else{
   res.json({isok:false})
-  console.log("€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€")
+  
   error.push('utilisateur déjà présent')
 }
-
-// if(req.body.nom == ''
-//   || req.body.email == ''
-//   || req.body.password == ''
-//   || req.body.status == 0
-//   || req.body.adress == ''
-//   ){
-//     error.push('champs vides')
-//   }
-
-  
-
-
 
 })
 
 
 router.post('/connection', async function(req, res){
 
-  console.log(req.body.email , req.body.password, "*************************************************************")
+  
  
   var error = []
   var userConnect = await UserModel.findOne({email : req.body.email } );
 
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", userConnect)
+  
 
  if(bcrypt.compareSync(req.body.password, userConnect.password)){
   res.json({isok:true}) 
@@ -97,7 +84,7 @@ router.post('/connection', async function(req, res){
 
 
 router.post('/addrdv',async function(req, res){
-  console.log("route add info##########################")
+  
   var patient = await UserModel.findOne({email : req.body.patientId})
   var docteur = await UserModel.findOne({email : req.body.medecinId})
   
@@ -123,44 +110,42 @@ router.post('/addrdv',async function(req, res){
     
     var patient = await UserModel.findOne({status : 1 , email : req.body.email})
 
-    console.log("*****************************************patient***************", patient)
+    
     var docteur = await UserModel.findOne({status : 4 ,email : req.body.email})
-    console.log("*****************************************docteur***************", docteur)
+   
 
     if(docteur != null){
-      console.log("je suis passer par le medecin")
+      
       var articles = await RdvModel.find({medecinId : docteur._id})
        
       for(var i=0 ; i < articles.length ; i++){
         const test =  articles[i]
-        console.log('forrrrrrr',test)
+        
         const test2 = test
         const test3 = await UserModel.findById(test.patientId)
-        console.log("testttttttttttttttt", test3.nom)
+       
         const test4 = test3.nom
         const test5 = { name : test4};
-        console.log("testtetetetetetete",test4)
+       
         const test6 = Object.assign(test5, test2)
-        console.log("finaltesttt",test6)
-        console.log("tentative", test5)
+        
         tab.push(test6)
       }
     }else{
-      console.log("je suis passer par le patient")
+      
       var articles = await RdvModel.find({patientId : patient._id})
-      console.log("test info retour", articles)
+     
       for(var i=0 ; i < articles.length ; i++){
         const test =  articles[i]
-        console.log('forrrrrrr',test)
+        
         const test2 = test
         const test3 = await UserModel.findById(test.medecinId)
-        console.log("testttttttttttttttt", test3.nom)
+        
         const test4 = test3.nom
         const test5 = { name : test4};
-        console.log("testtetetetetetete",test4)
+       
         const test6 = Object.assign(test5, test2)
-        console.log("finaltesttt",test6)
-        console.log("tentative", test5)
+        
         tab.push(test6)
       }
       
@@ -198,7 +183,7 @@ router.post('/addrdv',async function(req, res){
       })
 
       router.post('/recepprescription',async function(req, res){
-        console.log("route add info##########################")
+        
 
         var prescription = await RdvModel.findOne({ patientId : req.body.id})
 
@@ -207,18 +192,13 @@ router.post('/addrdv',async function(req, res){
           
         } else {
           var prescription = await RdvModel.find({ patientId : req.body.id})
-        }
-        
-        
-        
-          console.log(prescription)
-        
+        }     
         
         res.json({prescription});
         })
 
         router.post('/recepMyprescription',async function(req, res){
-          console.log("route add info##########################")
+          
   
           var prescription = await RdvModel.findOne({ _id : req.body.id})
   
@@ -228,12 +208,6 @@ router.post('/addrdv',async function(req, res){
           } else {
             var prescription = await RdvModel.findOne({ _id : req.body.id})
           }
-          
-          
-          
-            console.log(prescription)
-          
-          
           res.json({prescription});
           })
 
@@ -249,17 +223,11 @@ router.post('/addrdv',async function(req, res){
           duree: req.body.duree,
           autre: req.body.autre,}}})
         
-          console.log(prescription)
+        
         
         
         res.json({prescription});
         })
-
-
-
-
-
-
 
   const nbreAleatoire = (min,max)=>{
     return Math.floor(Math.random() * (max+1 - min) + min);
