@@ -78,11 +78,7 @@ router.post('/addrdv',async function(req, res){
     Photo: req.body.photo,
     description : req.body.description,
     validite : req.body.validite,
-    prescription : {number: req.body.number,
-                    prise: req.body.prise,
-                    duree: req.body.duree,
-                    autre: req.body.autre,
-                    }
+    
 
   })}
   var newRdv = await newRdv1.save()
