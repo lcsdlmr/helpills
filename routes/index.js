@@ -57,7 +57,7 @@ console.log("test************************* je passe par ici" )
 
   }else{
   res.json({isok:false})
-  
+  console.log("test************************* je passe par ici" )
   error.push('utilisateur déjà présent')
 }
 
