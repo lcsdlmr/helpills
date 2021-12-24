@@ -53,6 +53,8 @@ router.post('/inscription',async function(req, res){
  
 res.json({isok:true, userSave:userSave})
 
+console.log("test************************* je passe par ici" )
+
   }else{
   res.json({isok:false})
   
