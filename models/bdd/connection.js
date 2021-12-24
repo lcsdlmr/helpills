@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 var mongoose = require('mongoose');
 
 var options = {
@@ -6,7 +8,7 @@ var options = {
     useNewUrlParser: true,
 }
 
-mongoose.connect('mongodb+srv://helpills:Chiquette13@cluster0.lrahe.mongodb.net/helpills?retryWrites=true&w=majority', options, 
+mongoose.connect(process.env.APP_BDD, options, 
 function(err) {
     if(err){
        console.log(err); 
