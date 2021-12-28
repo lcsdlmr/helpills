@@ -204,12 +204,7 @@ router.post('/addrdv',async function(req, res){
   
           var prescription = await RdvModel.findOne({ _id : req.body.id})
   
-          if(prescription == null){
-            var prescription = await RdvModel.findOne({ _id : req.body.id})
-            
-          } else {
-            var prescription = await RdvModel.findOne({ _id : req.body.id})
-          }
+          
           res.json({prescription});
           })
 
